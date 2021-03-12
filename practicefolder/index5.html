@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Display a Telephone Input Field</h1>
+<form>
+<label for="email">Enter your email:</label>
+
+<input type="email" id="email"
+       pattern=".+@globex.com" size="30" required>
+       <button type="button" on click="response is saved">click</button>
+</form>
+<script type="text/javascript">
+    function validateForm() {
+        return checkPhone();
+    }
+    function checkPhone() {
+        var phone = document.forms["myForm"]["phone"].value;
+        var phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
+            if(phone.value.match(phoneNum)) {
+                return true;
+            }
+            else {
+                document.getElementById("phone").className = document.getElementById("phone").className + " error";
+                return false;
+            }
+        }
+</script>
+
+function validatePhoneNumber(input_str) {
+    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    return re.test(input_str);
+}
+
+function validateForm(event) {
+    var phone = document.getElementById('myform_phone').value;
+    if (!validatePhoneNumber(phone)) {
+        document.getElementById('phone_error').classList.remove('hidden');
+    } else {
+        document.getElementById('phone_error').classList.add('hidden');
+        alert("validation success")
+    }
+    event.preventDefault();
+}
+
+document.getElementById('myform').addEventListener('submit', validateForm);

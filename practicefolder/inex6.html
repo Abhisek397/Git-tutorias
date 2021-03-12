@@ -1,0 +1,24 @@
+<html>
+    <head>
+
+    </head>
+<body>
+    <script>
+    function myfunc(){
+var a=document.getElementById ("mobile").value;
+if (a=="") {
+    document.getElementById("message").innerHTML="**Please fill mobile number";
+    return false;
+}
+if (isNaN(a))
+document.getElementById("message").innerHTML="**only digits are allowed";
+    return false;
+    }
+        </script>
+    <form onsubmit return=myfunc()>
+       Mobile Number <input type="text" id="mobile" value="" >
+       <span id=message></span><br><br>
+       <input type="submit" value="submit" >
+    </form>
+</body>
+    </html>
